@@ -1,12 +1,9 @@
-const express = require('express'),
-    app = express();
+import express from "express";
+import bodyParser from "body-parser";
+import db from "./db.js";
+import employeeRoutes from "./controller/employee.controller.js";
 
-const bodyParser = require('body-parser');
-const db = require('./db'),
-
-    //bodyParser = require('body-parser')
-
-    employeeRoutes = require('./controller/employee.controller')
+const app = express();
 
 app.use(bodyParser.json())
 app.use(express.json());

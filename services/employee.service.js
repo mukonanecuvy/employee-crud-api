@@ -1,6 +1,6 @@
-const db = require('../db')
+import db from "../db.js";
 
-module.exports.getAllEmployees = async () => {
+export const getAllEmployees = async () => {
 
     const [record] = await db.query("SELECt * fROM employees")
 
@@ -9,7 +9,7 @@ module.exports.getAllEmployees = async () => {
 }
 
 
-module.exports.getEmployeeById = async (id) => {
+export const getEmployeeById = async (id) => {
 
     const [record] = await db.query("SELECt * fROM employees WHERE id = ?", [id])
 
@@ -17,7 +17,7 @@ module.exports.getEmployeeById = async (id) => {
 
 }
 
-module.exports.deleteEmployee = async (id) => {
+export const deleteEmployee = async (id) => {
 
     const [{ affectedRows }] = await db.query("DELETE fROM employees WHERE id = ?", [id])
 
@@ -25,7 +25,7 @@ module.exports.deleteEmployee = async (id) => {
 
 }
 
-module.exports.addOrEditEmployee = async (obj, id = 0) => {
+export const addOrEditEmployee = async (obj, id = 0) => {
 
     const [[[affectedRows]]] = await db.query("CALL usp_employee_add_or_edit(?,?,?,?)", [id, obj.name, obj.employee_code, obj.salary])
 

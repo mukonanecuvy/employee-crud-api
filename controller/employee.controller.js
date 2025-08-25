@@ -1,8 +1,8 @@
-const express = require('express'),
-    router = express.Router()
+import express from "express";
+import * as service from "../services/employee.service.js";
 
-const service = require('../services/employee.service')
 
+const router = express.Router();
 
 //http://localhost:3000/api/employees/
 router.get('/', async (req, res) => {
@@ -60,4 +60,4 @@ router.put('/:id', async (req, res) => {
 
 })
 
-module.exports = router;
+export default router;
